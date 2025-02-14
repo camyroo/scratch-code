@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .background-gallery {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .background-gallery img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            position: absolute;
+            animation: float 5s infinite alternate ease-in-out;
+        }
+        .heart {
+            mask: radial-gradient(at 70% 31%,#000 29%,#0000 30%),
+                  radial-gradient(at 30% 31%,#000 29%,#0000 30%),
+                  linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
+            clip-path: polygon(-41% 0,50% 91%, 141% 0);
+        }
+        .circle {
+            clip-path: circle(50% at center);
+        }
+        .square {
+            clip-path: inset(0);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            color: #ff66b2;
+            font-size: 2.5em;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff3399;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #ff66b2;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: pulse 1.5s infinite;
+        }
+        .button:hover {
+            background-color: #ff3399;
+            transform: scale(1.1);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 10;
+        }
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup .yes {
+            background-color: #ff66b2;
+            color: white;
+        }
+        .popup .no {
+            background-color: #ccc;
+            color: black;
+        }
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(20px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        let questions = [
+            { text: "Do you love me?", noFollowUp: ["Are you fr?", "Don't say that..", ":(", "Just close this site then."] },
+            { text: "Will you always be mine?", noFollowUp: ["Say yes", "I knew you hated me"] },
+            { text: "Do you want flowers?", noFollowUp: ["Okay.."] },
+            { text: "Can I touch your booty?", noFollowUp: ["Aww.."] },
+            { text: "BB.Q and Boba or Wingstop?", noFollowUp: ["No? Then let's stay in and cuddle!"] }
+        ];
+        let currentQuestion = 0;
+        let followUpIndex = 0;
+        
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup-question').innerText = questions[currentQuestion].text;
+        }
+        
+        function nextQuestion(answer) {
+            if (answer === 'no' && questions[currentQuestion].noFollowUp) {
+                if (followUpIndex < questions[currentQuestion].noFollowUp.length) {
+                    document.getElementById('popup-question').innerText = questions[currentQuestion].noFollowUp[followUpIndex];
+                    followUpIndex++;
+                    return;
+                }
+            }
+            followUpIndex = 0;
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                document.getElementById('popup-question').innerText = questions[currentQuestion].text;
+            } else {
+                document.getElementById('popup').style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="background-gallery">
+        <img src="1.jpg" alt="Picture of us" class="heart" style="top: 5%; left: 15%;">
+        <img src="2.jpg" alt="Another picture of us" class="circle" style="top: 20%; left: 65%;">
+        <img src="3.jpg" alt="Happy moments" class="square" style="top: 35%; left: 10%;">
+        <img src="4.jpg" alt="Cute memories" class="heart" style="top: 50%; left: 80%;">
+        <img src="5.jpg" alt="Lovely memory" class="circle" style="top: 65%; left: 40%;">
+        <img src="6.jpg" alt="Adventurous time" class="square" style="top: 75%; left: 20%;">
+        <img src="7.jpg" alt="Cherished moment" class="heart" style="top: 10%; left: 80%;">
+        <img src="8.jpg" alt="Romantic getaway" class="circle" style="top: 30%; left: 50%;">
+        <img src="9.jpg" alt="Joyful day" class="square" style="top: 90%; left: 10%;">
+        <img src="10.jpg" alt="Beautiful day" class="circle" style="top: 85%; left: 75%;">
+    </div>
+    <div class="container">
+        <h1>Happy Valentine's Day, Pookie! </h1>
+        <p class="message">Every day with you is special, but today is extra special because we get to celebrate it. </p>
+        <button class="button" onclick="showPopup()">Click for Love</button>
+    </div>
+    <div class="popup" id="popup">
+        <p id="popup-question">Do you love me? </p>
+        <button class="yes" onclick="nextQuestion('yes')">Yes</button>
+        <button class="no" onclick="nextQuestion('no')">No</button>
+    </div>
+</body>
+</html>
