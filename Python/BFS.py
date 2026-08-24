@@ -34,7 +34,7 @@ def build_adj_list(n, edges):
 def count_components(n, edges):
 
     adj = build_adj_list(n,edges)
-    
+
     visited = set()
     groups = 0
     for x in range(n):
@@ -44,21 +44,13 @@ def count_components(n, edges):
             for y in group:
                 visited.add(y)
     
-    return groups        
+    return groups       
+ 
 def main():
-    graph = {
-        0: [1, 2],
-        1: [0, 3],
-        2: [0, 3],
-        3: [1, 2]
-    }
-    
-
     n = 5
     edges = [[0,1], [1,2], [3,4]]
 
-    adj = build_adj_list(n, edges)
-    print(count_components(n, adj))
+    print(count_components(n, edges))
 
 if __name__ == "__main__":
     main()
